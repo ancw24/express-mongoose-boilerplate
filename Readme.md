@@ -1,7 +1,9 @@
-# Express + Bootstrap + Font Awesome + Pug
+# Express + Mongoose + Bootstrap + FontAwesome
 
-This boilerplate loads [Bootstrap 4](https://getbootstrap.com/), [Font Awesome 4](https://fontawesome.com/), [jQuery](http://jquery.com/) and [popper.js](https://popper.js.org/) and more useful stuff.  
+This boilerplate uses [Express](http://expressjs.com/), [Mongoose](http://mongoosejs.com/), [Bootstrap 4](https://getbootstrap.com/), [Font Awesome 4](https://fontawesome.com/), [jQuery](http://jquery.com/), [Axios](https://github.com/axios/axios) and more useful stuff.
 We included everything you need to start a small project from scratch.
+
+The demo application includes a ToDo list with a mongoose model, a controller and the needed JavaScript for handling events and loading data with Axios.
 
 The ```npm start``` command will not only start the application, but also watch for changes of your SCSS and JavaScript files, using [webpack](https://webpack.js.org/). The [nodemon](https://nodemon.io/) package is used to automatically restart the server, if your scripts change, while it's running.
 
@@ -18,7 +20,7 @@ The ```npm start``` command will not only start the application, but also watch 
 If you want to run the application in development mode, where webpack is watching for changes of SCSS and JavaScript files, etc. simply run the following command:  
 ```npm run dev```.
 
-And for production mode use:
+And for production mode use:  
 ```npm start```
 
 ## Configuration
