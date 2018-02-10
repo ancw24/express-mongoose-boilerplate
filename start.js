@@ -4,8 +4,25 @@ const mongoose = require('mongoose')
 require('dotenv').config({ path: 'variables.env' })
 
 // connect to our database and handle any bad connections
+const mongooseOptions = {}
+
+if (process.env.DATABASE_USER
+    && process.env.DATABASE_PASSWORD
+    && process.env.DATABASE_USER.trim() !== ''
+    && process.env.DATABASE_PASSWOD.trim() !== '') {
+    mongooseOptions = {
+        auth: {
+            user: process.env.DATABASE_USER,
+            password: process.env.DATABASE_PASSWOD
+        }
+    }
+}
+
 mongoose.Promise = global.Promise
-mongoose.connect(process.env.DATABASE)
+mongoose.connect(
+    `mongodb://${process.env.DATABASE_HOST || localhost}:${process.env.DATABASE_PORT || 27017}/${process.env.DATABASE_NAME || 'express-mongo-boilerplate'}`,
+    mongooseOptions
+)
     .catch((error) => {
         console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${error.message}`)
         process.exit(1)
