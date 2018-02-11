@@ -6,14 +6,14 @@ require('dotenv').config({ path: 'variables.env' })
 // connect to our database and handle any bad connections
 const mongooseOptions = {}
 
-if (process.env.DATABASE_USER
+if (process.env.DATABASE_USERNAME
     && process.env.DATABASE_PASSWORD
-    && process.env.DATABASE_USER.trim() !== ''
-    && process.env.DATABASE_PASSWOD.trim() !== '') {
+    && process.env.DATABASE_USERNAME.trim() !== ''
+    && process.env.DATABASE_PASSWORD.trim() !== '') {
     mongooseOptions = {
         auth: {
-            user: process.env.DATABASE_USER,
-            password: process.env.DATABASE_PASSWOD
+            user: process.env.DATABASE_USERNAME,
+            password: process.env.DATABASE_PASSWORD
         }
     }
 }
