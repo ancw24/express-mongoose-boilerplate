@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 require('dotenv').config({ path: 'variables.env' })
 
 // connect to our database and handle any bad connections
-const mongooseOptions = {}
+let mongooseOptions = {}
 
 if (process.env.DATABASE_USERNAME
     && process.env.DATABASE_PASSWORD
