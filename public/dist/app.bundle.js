@@ -16674,18 +16674,18 @@ module.exports = g;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
-var buttonAddTodo = document.querySelector('.button-add-todo');
-var todoFormNew = document.querySelector('.todo-form-new');
-var todoList = document.querySelector('#todo-list-display');
-var loading = document.querySelector('#todo-list-loading');
-var error = document.querySelector('#todo-list .todo-error');
+var buttonAddTodo = document.querySelector(".button-add-todo");
+var todoFormNew = document.querySelector(".todo-form-new");
+var todoList = document.querySelector("#todo-list-display");
+var loading = document.querySelector("#todo-list-loading");
+var error = document.querySelector("#todo-list .todo-error");
 registerButtonEvent();
 registerFormEvent();
 loadToDoList();
 
 function loadToDoList() {
   toggleLoading();
-  __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/todos').then(function (response) {
+  __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/todos").then(function (response) {
     buildToDoList(response.data.todos);
     toggleLoading();
   }).catch(function (error) {
@@ -16695,12 +16695,12 @@ function loadToDoList() {
 }
 
 function buildToDoList(todos) {
-  var markup = '';
+  var markup = "";
 
   if (todos.length !== 0) {
     markup = todos.map(function (todo) {
       return buildToDoListItem(todo);
-    }).join('');
+    }).join("");
   }
 
   todoList.innerHTML = markup;
@@ -16708,11 +16708,11 @@ function buildToDoList(todos) {
 }
 
 function buildToDoListItem(todo) {
-  return "\n        <div class=\"list-group-item flex-column\" data-id=\"".concat(todo._id, "\">\n            ").concat(todo.text, "\n            <i class=\"icon-remove fa fa-remove float-right\" title=\"delete item\"></i>\n        </div>\n    ");
+  return "\n        <div class=\"list-group-item flex-column\" data-id=\"".concat(todo._id, "\">\n            ").concat(todo.text, "\n            <i class=\"icon-remove far fa-trash-alt float-right\" title=\"delete item\"></i>\n        </div>\n    ");
 }
 
 function toggleLoading() {
-  loading.classList.toggle('hidden');
+  loading.classList.toggle("hidden");
 }
 
 function addItem(text) {
@@ -16720,7 +16720,7 @@ function addItem(text) {
     return;
   }
 
-  __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/todos/add', {
+  __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/todos/add", {
     text: text
   }).then(function (response) {
     var item = buildToDoListItem(response.data.todo);
@@ -16733,9 +16733,9 @@ function addItem(text) {
 }
 
 function removeItem(e) {
-  var toDoItem = this.closest('.list-group-item');
+  var toDoItem = this.closest(".list-group-item");
   var toDoId = toDoItem.dataset.id;
-  var confirmed = confirm('Really delete this entry?');
+  var confirmed = confirm("Really delete this entry?");
 
   if (confirmed) {
     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/todos/".concat(toDoId, "/delete/")).then(function (response) {
@@ -16747,39 +16747,39 @@ function removeItem(e) {
 }
 
 function registerListEvents() {
-  todoList.querySelectorAll('.list-group-item .icon-remove').forEach(function (item) {
-    item.addEventListener('click', removeItem);
+  todoList.querySelectorAll(".list-group-item .icon-remove").forEach(function (item) {
+    item.addEventListener("click", removeItem);
   });
 }
 
 function removeListEvents() {
-  todoList.querySelectorAll('.list-group-item .icon-remove').forEach(function (item) {
-    item.removeEventListener('click', removeItem);
+  todoList.querySelectorAll(".list-group-item .icon-remove").forEach(function (item) {
+    item.removeEventListener("click", removeItem);
   });
 }
 
 function registerButtonEvent() {
-  buttonAddTodo.addEventListener('click', function () {
-    console.log('foo');
-    todoFormNew.style.display = 'block';
-    todoFormNew.querySelector('input').focus();
-    this.setAttribute('disabled', 'disabled');
+  buttonAddTodo.addEventListener("click", function () {
+    console.log("foo");
+    todoFormNew.style.display = "block";
+    todoFormNew.querySelector("input").focus();
+    this.setAttribute("disabled", "disabled");
   });
 }
 
 function registerFormEvent() {
-  todoFormNew.addEventListener('submit', function (e) {
+  todoFormNew.addEventListener("submit", function (e) {
     e.preventDefault();
     addItem(this.querySelector('[name="text"]').value);
-    this.querySelector('[name="text"]').value = '';
-    this.style.display = 'none';
-    buttonAddTodo.removeAttribute('disabled');
+    this.querySelector('[name="text"]').value = "";
+    this.style.display = "none";
+    buttonAddTodo.removeAttribute("disabled");
   });
 }
 
 function todoError(message) {
   error.innerHTML = message;
-  error.classList.remove('hidden');
+  error.classList.remove("hidden");
 }
 
 /***/ }),

@@ -44,7 +44,7 @@ function buildToDoListItem(todo) {
   return `
         <div class="list-group-item flex-column" data-id="${todo._id}">
             ${todo.text}
-            <i class="icon-remove fa fa-remove float-right" title="delete item"></i>
+            <i class="icon-remove far fa-trash-alt float-right" title="delete item"></i>
         </div>
     `;
 }
